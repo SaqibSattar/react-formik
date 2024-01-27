@@ -9,6 +9,10 @@ const initialValues = {
   channel: "",
   comments: "",
   address: "",
+  social: {
+    facebook: "",
+    twitter: "",
+  },
 };
 
 const onSubmit = (values) => {
@@ -40,9 +44,7 @@ const YoutubeForm = () => {
           <label htmlFor="email">Email</label>
           <Field type="email" id="email" name="email" />
           <ErrorMessage name="email">
-            {
-              (errorMsg) => <div className="error">{errorMsg}</div>
-            }
+            {(errorMsg) => <div className="error">{errorMsg}</div>}
           </ErrorMessage>
         </div>
         <div className="form-control">
@@ -65,7 +67,7 @@ const YoutubeForm = () => {
           <label htmlFor="address">Address</label>
           <Field name="address">
             {(props) => {
-              console.log("Render props:", props);
+              // console.log("Render props:", props);
               const { field, form, meta } = props;
               return (
                 <div>
@@ -76,6 +78,17 @@ const YoutubeForm = () => {
             }}
           </Field>
         </div>
+        <div className="form-control">
+          <label htmlFor="facebook">Facebook profile</label>
+          <Field type="text" id="facebook" name="social.facebook" />
+          <ErrorMessage name="social.facebook" />
+        </div>
+        <div className="form-control">
+          <label htmlFor="twitter">Twitter profile</label>
+          <Field type="text" id="twitter" name="social.twitter" />
+          <ErrorMessage name="social.twitter" />
+        </div>
+
         <br />
         <button type="submit">Submit</button>
       </Form>
