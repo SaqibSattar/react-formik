@@ -11,11 +11,11 @@ import * as Yup from "yup";
 import TextError from "./TextError";
 
 const initialValues = {
-  name: "",
-  email: "",
-  channel: "",
-  comments: "",
-  address: "",
+  name: "test",
+  email: "test@gmail.com",
+  channel: "test channel",
+  comments: "first comment",
+  address: "address 1",
   social: {
     facebook: "",
     twitter: "",
@@ -50,6 +50,7 @@ const YoutubeForm = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={onSubmit}
+      // validateOnMount
       // validateOnChange={false}
       // validateOnBlur={false}
     >
@@ -77,7 +78,9 @@ const YoutubeForm = () => {
                 name="channel"
                 placeholder="channel name"
               />
-              <ErrorMessage name="channel" />
+              <ErrorMessage name="channel">
+                {(errorMsg) => <div className="error">{errorMsg}</div>}
+              </ErrorMessage>
             </div>
             <br />
             <div className="form-control">
@@ -89,7 +92,7 @@ const YoutubeForm = () => {
                 name="comments"
                 validate={validateComments}
               />
-              <ErrorMessage name="comments" />
+              <ErrorMessage name="comments"  className="error"/>
             </div>
             <div className="form-control">
               <label htmlFor="address">Address</label>
@@ -194,7 +197,12 @@ const YoutubeForm = () => {
             >
               Visit Fields
             </button>
-            <button type="submit">Submit</button>
+            <button
+              type="submit"
+              disabled={!(formik.dirty && formik.isValid)}
+            >
+              Submit
+            </button>
             <br />
             <br />
           </Form>
