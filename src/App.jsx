@@ -5,15 +5,18 @@ import FormikContainer from "./components/FormikContainer";
 import LoginForm from "./components/LoginForm";
 import RegistrationForm from "./components/RegistrationForm";
 import EnrollmentForm from "./components/EnrollmentForm";
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   return (
     <div className="App">
     {/* <YoutubeForm /> 
     <FormikContainer />
-    <LoginForm />
-    <RegistrationForm /> */}
-    <EnrollmentForm />
+    <RegistrationForm /> 
+    <EnrollmentForm />*/}
+    <ChakraProvider>
+      <LoginForm />
+    </ChakraProvider>
     </div>
   );
 }

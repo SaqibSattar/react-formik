@@ -30,7 +30,7 @@ function LoginForm () {
         return (
           <Form>
             <FormikControl
-              control='input'
+              control='chakraInput'
               type='email'
               label='Email'
               name='email'
